@@ -6,3 +6,15 @@ h1, h2 {
 div > p {
    color: skyblue
 }
+
+ul li {
+   color: cornflowerblue
+}
+
+li.done {
+   color: aquamarine;
+}
+
+ul p.done {
+   font-size: .5rem;
+}
