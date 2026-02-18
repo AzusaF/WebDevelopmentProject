@@ -1,19 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Box Model</title>
+    <style>
+      /* Write your CSS code here */
+      h1 {
+        font-family: Helvetica, Arial, sans-serif;
+        color: blue;
+      }
+      div {
+        width: 200px;
+        height: 200px;
+      }
+      #top {
+        background-color: red;
+        color: beige;
+        padding: 20px 20px;
+        border: solid 10px;
+        border-color: black;
+      }
+      p {
+        margin: 0px;
+      }
+      #mid {
+        margin-left: 260px;
+        background-color: gold;
+        border: solid;
+        border-width: 20px 10px;
+        border-color: black;
+      }
+      #bottom {
+        background-color: navy;
+        border: solid 10px;
+        margin-left: 40px;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>CSS Box Model</title>
-  <style>
-    /* Write your CSS code here */
-
-  </style>
-</head>
-
-<body>
-
-
-  <!-- TODOs:
+  <body>
+    <!-- TODOs:
 1. Create 3 Boxes using the div element.
 2. Set their sizes to 200px heigh by 200px wide.
 3. Set different background colors for each of the boxes (I used cadetblue, gold and indianred).
@@ -28,7 +54,17 @@ Hint: Use the CSS inspector in Chrome.
 8. Set the 3rd div to have a 10px border 
 9. Set the margins for the divs so that each box corner touches the other. (See the goal image)
 -->
-
-</body>
-
+    <h1>Piet Mondrian Practice</h1>
+    <div id="top">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
+        sapien porttitor urna elementum lacinia. In id magna pulvinar, ultricies
+        lorem id, vehicula elit. Aliquam eu luctus nisl, vitae pellentesque
+        magna. Phasellus dolor metus, laoreet ac convallis sit amet, efficitur
+        sed dolor.
+      </p>
+    </div>
+    <div id="mid"></div>
+    <div id="bottom"></div>
+  </body>
 </html>
