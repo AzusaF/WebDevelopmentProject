@@ -10,3 +10,16 @@ p {
   margin: 0;
   padding: 0;
 }
+
+/* Adding some code below */
+#outer-box {
+  background-color: blueviolet;
+}
+
+.white-text {
+  color: white;
+}
+
+.inner-box {
+  background-color: red;
+}
