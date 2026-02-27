@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Flexbox Pricing Table</title>
@@ -13,25 +13,95 @@
         font-family: "Sono", sans-serif;
       }
 
+      .pricing-container {
+        display: flex;
+        flex-direction: raw;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+      }
+
+      .plan-title {
+        font-weight: bold;
+        font-size: large;
+      }
+
+      .plan-price {
+        font-weight: bold;
+        font-size: xx-large;
+      }
+
+      .pricing-plan {
+        flex: 1;
+        text-align: center;
+        padding: 0 2rem 1rem 2rem;
+      }
+
+      li {
+        text-align: start;
+      }
+
+      .pricing-container > .basic {
+        background-color: rgb(48, 174, 216);
+      }
+
+      .basic > .plan-button {
+        background-color: rgb(91, 208, 255);
+        color: rgb(37, 59, 157);
+        border-color: rgb(37, 59, 157);
+      }
+
+      .pricing-container > .standard {
+        background-color: rgb(70, 216, 48);
+      }
+
+      .standard > .plan-button {
+        background-color: rgb(91, 255, 91);
+        color: rgb(37, 157, 45);
+        border-color: rgb(33, 134, 35);
+      }
+
+      .pricing-container > .premium {
+        background-color: rgb(216, 48, 208);
+      }
+
+      .premium > .plan-button {
+        background-color: rgb(255, 91, 247);
+        color: rgb(155, 37, 157);
+        border-color: rgb(134, 33, 134);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .plan-button {
+        font-family: "Sono";
+      }
+
       /* Hint: What can you do with a media query and flexbox? */
-      @media (max-width: 1250px) {
+      /* When mobile */
+      @media (max-width: 680px) {
+        .pricing-container {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
 
   <body>
     <div class="pricing-container">
-      <div class="pricing-plan">
+      <div class="pricing-plan basic">
         <div class="plan-title">Basic</div>
         <div class="plan-price">$9.99/month</div>
         <ul class="plan-features">
-          <li>✅ 10GB Storage</li>
+          <li><span class="emoji">✅</span> 10GB Storage</li>
           <li>✅ 1 User</li>
           <li>🚫 Support</li>
         </ul>
         <button class="plan-button">Sign Up</button>
       </div>
-      <div class="pricing-plan">
+      <div class="pricing-plan standard">
         <div class="plan-title">Standard</div>
         <div class="plan-price">$19.99/month</div>
         <ul class="plan-features">
@@ -41,7 +111,7 @@
         </ul>
         <button class="plan-button">Sign Up</button>
       </div>
-      <div class="pricing-plan">
+      <div class="pricing-plan premium">
         <div class="plan-title">Premium</div>
         <div class="plan-price">$49.99/month</div>
         <ul class="plan-features">
