@@ -1,29 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mondrian Project</title>
+    <style>
+      /*
+      Write your CSS here
+      Gap Colour: #000
+      White: #F0F1EC
+      Red: #E72F24
+      Black: #232629
+      Blue: #004592
+      Yellow: #F9D01E
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mondrian Project</title>
-  <style>
-    /* 
-    Write your CSS here 
-    Gap Colour: #000
-    White: #F0F1EC
-    Red: #E72F24
-    Black: #232629
-    Blue: #004592
-    Yellow: #F9D01E
+      For dimensions, see dimensions.png image.
+      HINT: Remember you can't change the properties of grid lines.
+      But grid lines are transparent!
+      */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-    For dimensions, see dimensions.png image.
-    HINT: Remember you can't change the properties of grid lines.
-    But grid lines are transparent!
-    */
-  </style>
-</head>
+      .container {
+        display: grid;
+        grid-template: 1fr;
+        /* grid-auto-rows: 50px; */
+        gap: 9px;
+        background-color: #000;
+        grid-template-columns: 320px 198px 153px 50px;
+        grid-template-rows: 414px 130px 155px 20px;
+      }
 
-<body>
-  <!-- Write your HTML here -->
-</body>
+      .white {
+        background-color: #f0f1ec;
+      }
 
+      .red {
+        background-color: #e72f24;
+      }
+
+      .black {
+        background-color: #232629;
+      }
+
+      .yellow {
+        background-color: #f9d01e;
+      }
+
+      .blue {
+        background-color: #004592;
+        border-bottom: 10px solid #000;
+      }
+
+      #item2 {
+        grid-column: span 3;
+      }
+
+      #item3 {
+        grid-row: span 2;
+      }
+
+      #item4 {
+        grid-area: span 2 / span 2;
+      }
+
+      #item6 {
+        grid-row: span 2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Write your HTML here -->
+
+    <div class="container">
+      <div class="item red" id="item1"></div>
+      <div class="item white" id="item2"></div>
+      <div class="item white" id="item3"></div>
+      <div class="item white" id="item4"></div>
+      <div class="item blue" id="item5"></div>
+      <div class="item white" id="item6"></div>
+      <div class="item white" id="item7"></div>
+      <div class="item yellow" id="item8"></div>
+      <div class="item black" id="item9"></div>
+    </div>
+  </body>
 </html>
