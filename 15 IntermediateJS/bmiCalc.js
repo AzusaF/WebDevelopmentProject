@@ -7,7 +7,6 @@ function bmiCalculator (weight, height) {
        interpretation = "Your BMI is "+ bmi + ", so you have a normal weight." 
     } else {
         interpretation = "Your BMI is "+ bmi + ", so you are overweight." 
-
     }
     return interpretation;
 }
