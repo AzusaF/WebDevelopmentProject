@@ -5,14 +5,23 @@ for(i = 0; i < length; i++){
       document.querySelectorAll(".drum")[i].addEventListener("click", function(){
             var buttonInnerHTML = this.innerHTML;
             playAudio(buttonInnerHTML);
+            buttonAnnimation(buttonInnerHTML);
       }
 
 )};
 
 document.addEventListener("keydown", function(e){
       playAudio(e.key);
+      buttonAnnimation(e.key);
 });
 
+function buttonAnnimation(currentKey){
+      var activeButton = document.querySelector("." + currentKey);
+      activeButton.classList.add("pressed");
+      setTimeout(function(){
+            activeButton.classList.remove("pressed");
+      }, 100);
+}
 function playAudio(type){
       switch (type) {
             case 'w':
