@@ -1,0 +1,14 @@
+.initial {
+   font-size: 10rem;
+   color: blueviolet;
+}
+ 
+.pressed {
+   font-size: 10rem;
+   color: aqua;
+} 
+
+.already-pressed {
+   font-size: 10rem;
+   color: blue;
+}
