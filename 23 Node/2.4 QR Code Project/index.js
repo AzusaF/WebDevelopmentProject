@@ -11,15 +11,17 @@ import fs from "fs";
 
 inquirer
   .prompt([{
-    message: "Please enter the URL:",
-    name: "url",
+      message: "Please enter the URL:",
+      name: "url",
   }])
   .then((answer) => {
-   var string = qr.imageSync(answer.url);
-   fs.writeFile("./QR.png", string, (err)=>{
-      if(err) throw err;
-      console.log("The file has been saved!");
-  });
+      var url = answer.url;
+      var qr_png = qr.image(url);
+      qr_png.pipe(fs.createWriteStream("qr.png"));
+      fs.writeFile("./url.txt", url, (err)=>{
+         if(err) throw err;
+         console.log("The file has been saved!");
+      });
   })
   .catch((error) => {
     if (error.isTtyError) {
