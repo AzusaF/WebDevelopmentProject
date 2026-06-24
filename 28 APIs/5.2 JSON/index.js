@@ -17,7 +17,18 @@ app.get("/", (req, res) => {
 });
 
 app.post("/recipe", (req, res) => {
+  var protain = req.body["choice"];
+  var masterRecipe = JSON.parse(recipeJSON);
+  var recipe;
+  if (protain === "chicken"){
+    recipe = masterRecipe[0];
+  } else if (protain === "beef"){
+    recipe = masterRecipe[1];
+  } else {
+    recipe = masterRecipe[2];
+  }
   //Step 3: Write your code here to make this behave like the solution website.
+  res.render("index.ejs", recipe);
   //Step 4: Add code to views/index.ejs to use the recieved recipe object.
 });
 
