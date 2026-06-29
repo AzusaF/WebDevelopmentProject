@@ -9,12 +9,13 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Step 1: Make sure that when a user visits the home page,
-//   it shows a random activity.You will need to check the format of the
+//   it shows a random activity. You will need to check the format of the
 //   JSON data from response.data and edit the index.ejs file accordingly.
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get("https://bored-api.appbrewery.com/random");
     const result = response.data;
+    console.log(result);
     res.render("index.ejs", { data: result });
   } catch (error) {
     console.error("Failed to make request:", error.message);
@@ -35,6 +36,28 @@ app.post("/", async (req, res) => {
   // Step 3: If you get a 404 error (resource not found) from the API request.
   // Pass an error to the index.ejs to tell the user:
   // "No activities that match your criteria."
+  try {
+    var query = "";
+    if(req.body.type && req.body.participants) {
+      query = "?type=" + req.body.type + "&participants=" + req.body.participants;
+    } else if (req.body.type) {
+      query = "?type=" + req.body.type;
+    } else if(req.body.participants){
+      query = "?participants=" + req.body.participants;
+    }
+    console.log("https://bored-api.appbrewery.com/filter" + query);
+    const response = await axios.get("https://bored-api.appbrewery.com/filter" + query);
+    const result = response.data;
+    console.log(result);
+    const random = Math.floor(Math.random()*result.length) -1;
+    console.log(random);
+    res.render("index.ejs", { data: result, pick: random });
+  } catch (error) {
+    console.error("Failed to make request:", error.message);
+    res.render("index.ejs", {
+      error: "No match found"
+    });
+  }
 });
 
 app.listen(port, () => {
