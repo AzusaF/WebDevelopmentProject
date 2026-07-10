@@ -48,7 +48,7 @@ app.put("/jokes/:id", (req, res)=>{
       jokeText: req.body.text,
       jokeType: req.body.type,
     }
-    const searchIndex = jokes.findIndex((joke)=> {joke.id === id});
+    const searchIndex = jokes.findIndex((joke)=> joke.id === id);
     jokes[searchIndex] = replacementJoke; 
     console.log(jokes[searchIndex])
     res.json(jokes[searchIndex]);
@@ -57,10 +57,55 @@ app.put("/jokes/:id", (req, res)=>{
   }
 });
 //6. PATCH a joke
-
+app.patch("/jokes/:id", (req, res)=>{
+  try {
+    const id = parseInt(req.params.id);
+    const index = id - 1;
+    const existingJoke = jokes[index];
+    console.log(existingJoke);
+    const replacementJoke = {
+      id: id,
+      jokeText: req.body.text || existingJoke.jokeText,
+      jokeType: req.body.type || existingJoke.jokeType,
+    };
+    jokes[index] = replacementJoke; 
+    console.log(jokes[index]);
+    res.json(jokes[index]);
+  } catch (err) {
+    console.log(err);
+  }
+});
 //7. DELETE Specific joke
-
+app.delete("/jokes/:id", (req, res)=>{
+  try {
+    const id = parseInt(req.params.id);
+    const searchIndex = jokes.findIndex((joke)=> joke.id === id);
+    console.log(searchIndex);
+    if(searchIndex > -1){
+      jokes.splice(searchIndex, 1);
+      res.sendStatus(200);
+    } else {
+      res.status(404).json({error: `Joke with id: ${id} is not found. No joke is deleted.`})
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
 //8. DELETE All jokes
+app.delete("/all", (req, res)=>{
+  try {
+    const userKey = req.query.key;
+    if(userKey === masterKey){
+      jokes = [];
+      res.sendStatus(200);
+    } else {
+      res.status(404).json({error: `You are not authorized. No joke is deleted.`})
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Successfully started server on port ${port}.`);
