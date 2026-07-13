@@ -41,11 +41,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Write your code here//
 
 //CHALLENGE 1: GET All posts
-
+app.get("/posts", (req, res) => {
+  console.log(posts);
+  res.json(posts);
+});
 //CHALLENGE 2: GET a specific post by id
-
+app.get("posts/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const foundPost = posts.find((post) => post.id === id);
+  res.json(foundPost);
+});
 //CHALLENGE 3: POST a new post
-
+app.post("/posts", (req, res) => {
+  const id = (posts.length)+1;
+  console.log(posts.length);
+  console.log(id);
+  var newPost ={
+    id: id,
+    title: req.body.title,
+    content: req.body.content,
+    author: req.body.author,
+    date: new Date,
+  }
+  posts.push(newPost)
+  res.json(posts[id-1]);
+});
 //CHALLENGE 4: PATCH a post when you just want to update one parameter
 
 //CHALLENGE 5: DELETE a specific post by providing the post id.
