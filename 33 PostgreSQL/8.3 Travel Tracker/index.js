@@ -17,17 +17,10 @@ const db = new pg.Client({
 
 db.connect();
 
-var visited_countries = [];
-console.log(visited_countries.country_code);
-
-db.query("SELECT * FROM visited_countries", (err, res) => {
-  if (err) {
-    console.error("Error executing query", err.stack);
-  } else {
-    visited_countries = res.rows;
-  }
-  db.end();
-});
+function capitalize(str) {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -35,11 +28,25 @@ app.use(express.static("public"));
 app.get("/", async (req, res) => {
   //Write your code here.
   var countries_to_map = [];
-  visited_countries.forEach((country) => countries_to_map.push(country.country_code))
+  try {
+    const result = await db.query("SELECT country_code FROM visited_countries");
+    result.rows.forEach((country) => countries_to_map.push(country.country_code));
+  } catch (err) {
+    console.error("Error executing query", err.stack);
+  }
   res.render("index.ejs", { 
     countries: countries_to_map,
     total: countries_to_map.length
-   });
+  });
+});
+
+app.post("/add", async (req, res) => {
+  const country_name =  capitalize(req.body.country);
+  const result = await db.query("SELECT country_code FROM countries WHERE country_name = $1", [country_name]);
+  const data = result.rows[0];
+  const country_code = data.country_code;
+  await db.query("INSERT INTO visited_countries (country_code) VALUES ($1)", [country_code]);
+  res.redirect("/")
 });
 
 app.listen(port, () => {
