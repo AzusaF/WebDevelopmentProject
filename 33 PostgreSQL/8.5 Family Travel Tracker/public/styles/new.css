@@ -16,10 +16,10 @@ input[type="radio"] {
 input[type="radio"]:checked + label span {
   transform: scale(1.25);
 }
-input[type="radio"]:checked + label .red {
+input[type="radio"]:checked + label .tomato {
   border: 2px solid #711313;
 }
-input[type="radio"]:checked + label .orange {
+input[type="radio"]:checked + label .slateblue {
   border: 2px solid #873a08;
 }
 input[type="radio"]:checked + label .yellow {
@@ -31,7 +31,7 @@ input[type="radio"]:checked + label .olive {
 input[type="radio"]:checked + label .green {
   border: 2px solid #0e4e1d;
 }
-input[type="radio"]:checked + label .teal {
+input[type="radio"]:checked + label .indigo {
   border: 2px solid #003633;
 }
 input[type="radio"]:checked + label .blue {
@@ -62,8 +62,8 @@ label span {
   height: 100%;
   transition: transform 0.2s ease-in-out;
 }
-label span.red {
-  background: #db2828;
+label span.tomato {
+  background: tomato;
 }
 label span.orange {
   background: #f2711c;
@@ -74,11 +74,11 @@ label span.yellow {
 label span.olive {
   background: #b5cc18;
 }
-label span.green {
-  background: #21ba45;
+label span.slateblue {
+  background: slateblue;
 }
-label span.teal {
-  background: #00b5ad;
+label span.indigo {
+  background: indigo;
 }
 label span.blue {
   background: #2185d0;
